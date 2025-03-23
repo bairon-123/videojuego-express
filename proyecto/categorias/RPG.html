@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rol Play Game (RPG) - VideoJuegos Express</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        function agregarAlCarrito(nombre, precio) {
+            alert(`${nombre} ha sido agregado al carrito por ${precio}`);
+            // Aquí puedes agregar código para almacenar el producto en localStorage o enviarlo a un backend
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="login">
+            <form action="#" method="post">
+                <input type="text" name="username" placeholder="Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+        <h1>Aventura</h1>
+    </header>
+
+    <section class="categoria">
+        <div class="juego">
+            <img src="../images/FFVII.jpg" alt="Final Fantasy VII Rebirth">
+            <h2>Final Fantasy VII Rebirth</h2>
+            <p>Final Fantasy VII Rebirth es la segunda entrega dentro del proyecto de remake de Final Fantasy VII, que vuelve a contar la historia del RPG que redefinió el género en tres juegos distintos.</p>
+            <p><strong>Precio: $79.990</strong></p>
+            <button onclick="agregarAlCarrito('Final Fantasy VII Rebirth', '$79.990')">Agregar al Carrito</button>
+        </div>
+
+        <div class="juego">
+            <img src="../images/Paper Mario.jpg" alt="Paper Mario The Origami King">
+            <h2>Paper Mario The Origami King</h2>
+            <p>Mario se enfrenta a uno de sus desafíos más emocionantes hasta el momento en Paper Mario: The Origami King cuando el peligroso Rey Olly desata su plan de doblar el mundo entero.</p>
+            <p><strong>Precio: $45.990</strong></p>
+            <button onclick="agregarAlCarrito('Paper Mario The Origami King', '$45.990')">Agregar al Carrito</button>
+        </div>
+    </section>
+
+</footer>
+<section class="volver-tienda">
+<button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Carrito de Compras</h1>
+        <nav>
+            <a href="../index.html">Inicio</a>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h2>Tu Carrito</h2>
+        <div class="cart-items">
+            <!-- Los artículos se cargarán aquí desde localStorage -->
+        </div>
+
+        <div class="cart-summary">
+            <h3>Total: <span id="total">$0</span></h3>
+            <button id="checkout-btn" class="checkout-btn">Proceder al Pago</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VideoJuegos Express</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            cargarCarrito();
+        });
+
+        function cargarCarrito() {
+            const cartItems = document.querySelector('.cart-items');
+            cartItems.innerHTML = "";
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            let total = 0;
+
+            carrito.forEach((item, index) => {
+                let cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <h3>${item.nombre}</h3>
+                    <p>Precio: $${item.precio}</p>
+                    <p>Cantidad: 
+                        <input type="number" value="${item.cantidad}" min="1" class="quantity" onchange="actualizarCantidad(${index}, this.value)">
+                    </p>
+                    <button class="remove-btn" onclick="eliminarProducto(${index})">Eliminar</button>
+                `;
+                cartItems.appendChild(cartItem);
+                total += item.precio * item.cantidad;
+            });
+
+            document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+        }
+
+        function actualizarCantidad(index, cantidad) {
+            let carrito = JSON.parse(localStorage.getItem("carrito"));
+            carrito[index].cantidad = parseInt(cantidad);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            cargarCarrito();
+        }
+
+        function eliminarProducto(index) {
+            let carrito = JSON.parse(localStorage.getItem("carrito"));
+            carrito.splice(index, 1);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            cargarCarrito();
+        }
+    </script>
+</body>
+</footer>
+
+<section class="volver-tienda">
+    <button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+</section>
+
+</html>
