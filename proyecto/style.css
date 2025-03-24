@@ -178,7 +178,28 @@ footer {
 footer p {
     color: #fff;
 }
+.btn-verde {
+    background-color: #4CAF50; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
 
+.btn-verde:hover {
+    background-color: #45a049; 
+}
+
+
+
+
+/* formato de pantallas */
 /* Pantallas pequeñas */
 @media (max-width: 600px) {
     header {
