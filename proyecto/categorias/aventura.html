@@ -24,7 +24,7 @@
             <h2>Red Dead Redemption 2</h2>
             <p>Red Dead Redemption 2 es un videojuego de acción y aventura inspirado en la América de 1899, se trata de una precuela del primer videojuego Red Dead Redemption.</p>
             <p><strong>Precio: $14.000</strong></p>
-            <button onclick="agregarAlCarrito('Red Dead Redemption 2', 14000, '../images/Red Dead Redemption 2.jpg')">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Red Dead Redemption 2', 14000, '../images/Red Dead Redemption 2.jpg')">Agregar al Carrito</button>
         </div>
 
         <div class="juego">
@@ -32,29 +32,29 @@
             <h2>Minecraft: Java & Bedrock Edition (PC)</h2>
             <p>Minecraft es un juego formado por bloques, criaturas y comunidades. La elección es tuya: sobrevivir a la noche o crear una obra de arte.</p>
             <p><strong>Precio: $4.000</strong></p>
-            <button onclick="agregarAlCarrito('Minecraft: Java & Bedrock Edition (PC)', 4000, '../images/Minecraft Java & Bedrock Edition (PC).jpg')">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Minecraft: Java & Bedrock Edition (PC)', 4000, '../images/Minecraft Java & Bedrock Edition (PC).jpg')">Agregar al Carrito</button>
+
         </div>
     </section>
-
 </footer>
 <section class="volver-tienda">
-<button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+    <button class="btn-verde" onclick="window.location.href='../index.html'">Volver a la Tienda</button>
 </section>
 
-    <script>
-        function agregarAlCarrito(nombre, precio, imagen) {
-            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-            
-            let productoExistente = carrito.find(item => item.nombre === nombre);
-            if (productoExistente) {
-                productoExistente.cantidad += 1;
-            } else {
-                carrito.push({ nombre, precio, imagen, cantidad: 1 });
-            }
-            
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            alert("Producto agregado al carrito");
+<script>
+    function agregarAlCarrito(nombre, precio, imagen) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        
+        let productoExistente = carrito.find(item => item.nombre === nombre);
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, precio, imagen, cantidad: 1 });
         }
-    </script>
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Producto agregado al carrito");
+    }
+</script>
 </body>
 </html>

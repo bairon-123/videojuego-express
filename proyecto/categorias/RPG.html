@@ -28,7 +28,8 @@
             <h2>Final Fantasy VII Rebirth</h2>
             <p>Final Fantasy VII Rebirth es la segunda entrega dentro del proyecto de remake de Final Fantasy VII, que vuelve a contar la historia del RPG que redefinió el género en tres juegos distintos.</p>
             <p><strong>Precio: $79.990</strong></p>
-            <button onclick="agregarAlCarrito('Final Fantasy VII Rebirth', '$79.990')">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Final Fantasy VII Rebirth', 79990, '../images/FFVII.jpg')">Agregar al Carrito</button>
+
         </div>
 
         <div class="juego">
@@ -36,14 +37,30 @@
             <h2>Paper Mario The Origami King</h2>
             <p>Mario se enfrenta a uno de sus desafíos más emocionantes hasta el momento en Paper Mario: The Origami King cuando el peligroso Rey Olly desata su plan de doblar el mundo entero.</p>
             <p><strong>Precio: $45.990</strong></p>
-            <button onclick="agregarAlCarrito('Paper Mario The Origami King', '$45.990')">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Paper Mario The Origami King', 45990, '../images/Paper Mario.jpg')">Agregar al Carrito</button>
+
         </div>
     </section>
 
 </footer>
 <section class="volver-tienda">
-<button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+    <button class="btn-verde" onclick="window.location.href='../index.html'">Volver a la Tienda</button>
 </section>
 
+<script>
+    function agregarAlCarrito(nombre, precio, imagen) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        
+        let productoExistente = carrito.find(item => item.nombre === nombre);
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, precio, imagen, cantidad: 1 });
+        }
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Producto agregado al carrito");
+    }
+</script>
 </body>
 </html>

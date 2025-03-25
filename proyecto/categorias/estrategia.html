@@ -24,7 +24,7 @@
             <h2>Age of Empires IV</h2>
             <p>Age of Empires IV: Edición Aniversario combina lo que ya le funcionó en su momento con fórmulas innovadoras para que disfrutes expandiendo tu imperio hasta donde alcancen tus ojos.</p>
             <p><strong>Precio: $7.800</strong></p>
-            <button onclick="agregarAlCarrito('Age of Empires IV', 7800)">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Age of Empires IV', 7800, '../images/age_of_empires.jpg')">Agregar al Carrito</button>
         </div>
 
         <div class="juego">
@@ -32,29 +32,31 @@
             <h2>Civilization VI</h2>
             <p>Civilization, creado originalmente por Sid Meier, es un juego de estrategia por turnos en el que tu objetivo es construir un imperio que resista el paso del tiempo.</p>
             <p><strong>Precio: $20.000</strong></p>
-            <button onclick="agregarAlCarrito('Civilization VI', 20000)">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('Civilization VI', 20000, '../images/civilization_vi.jpg')">Agregar al Carrito</button>
+
+            
         </div>
     </section>
 
 </footer>
 <section class="volver-tienda">
-<button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+    <button class="btn-verde" onclick="window.location.href='../index.html'">Volver a la Tienda</button>
 </section>
 
-    <script>
-        function agregarAlCarrito(nombre, precio) {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            let producto = carrito.find(item => item.nombre === nombre);
-            
-            if (producto) {
-                producto.cantidad += 1;
-            } else {
-                carrito.push({ nombre, precio, cantidad: 1 });
-            }
-            
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            alert(nombre + ' ha sido agregado al carrito.');
+<script>
+    function agregarAlCarrito(nombre, precio, imagen) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        
+        let productoExistente = carrito.find(item => item.nombre === nombre);
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, precio, imagen, cantidad: 1 });
         }
-    </script>
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Producto agregado al carrito");
+    }
+</script>
 </body>
 </html>

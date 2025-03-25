@@ -39,7 +39,8 @@
             <h2>FIFA 2025</h2>
             <p>Juega en equipo en el Rush de 5c5, una nueva forma de jugar con amigos en los modos Football Ultimate Team™, Clubs y Kick-Off con equipos reducidos.</p>
             <p><strong>Precio: $20.000</strong></p>
-            <button onclick="agregarAlCarrito('FIFA 2025', 20000)">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('FIFA 2025', 20000, '../images/fifa_2025.jpg')">Agregar al Carrito</button>
+
         </div>
 
         <div class="juego">
@@ -47,14 +48,30 @@
             <h2>NBA 2025</h2>
             <p>Hay más formas que nunca de jugar NBA 2K, desde construir tu equipo legendario y llevarlo a la gloria hasta desafiar amigos en partidas espontáneas online.</p>
             <p><strong>Precio: $63.000</strong></p>
-            <button onclick="agregarAlCarrito('NBA 2025', 63000)">Agregar al Carrito</button>
+            <button class="btn-verde" onclick="agregarAlCarrito('NBA 2025', 63000, '../images/nba_2025.jpg')">Agregar al Carrito</button>
+
         </div>
     </section>
 
 </footer>
 <section class="volver-tienda">
-<button onclick="window.location.href='../index.html'">Volver a la Tienda</button>
+    <button class="btn-verde" onclick="window.location.href='../index.html'">Volver a la Tienda</button>
 </section>
 
+<script>
+    function agregarAlCarrito(nombre, precio, imagen) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        
+        let productoExistente = carrito.find(item => item.nombre === nombre);
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, precio, imagen, cantidad: 1 });
+        }
+        
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert("Producto agregado al carrito");
+    }
+</script>
 </body>
 </html>
